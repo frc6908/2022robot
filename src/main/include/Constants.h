@@ -13,3 +13,16 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+
+namespace drivetrain {
+    const int kLeftDriveTalonPort = 1;
+    const int kLeftDriveVenomPort = 2;
+
+    const int kRightDriveTalonPort = 3;
+    const int kRightDriveVenomPort = 4;
+}
+
+namespace oi {
+    const int kDriveJoystickPort = 0; // drive joystick
+    const int kDriveControllerPort = 1; // operator ps5 controller
+}
