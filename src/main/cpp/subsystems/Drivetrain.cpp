@@ -3,19 +3,27 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "subsystems/Drivetrain.h"
+#include "networktables/NetworkTable.h"
+#include "networktables/NetworkTableInstance.h"
+#include "networktables/NetworkTableEntry.h"
+#include "networktables/NetworkTableValue.h"
 
 Drivetrain::Drivetrain() {
     rightMotors.SetInverted(1); // inverts the right drive motors
+
 }
 
 void Drivetrain::setDriveMotors(double left, double right) {
+    tab.Add("LeftMotor", left);
+    tab.Add("RightMotor", right);
     if (flipped) {
         leftMotors.Set(-right);
         rightMotors.Set(-left);
     } else {
         leftMotors.Set(left);
-        rightMotors.Set(right);
+        rightMotors.Set(right - 0.015);
     }
+    //NetworkTableEntry testTab = Shuffleboard.getTab("Test").add("Pi", 3.14);
 }
 
 void Drivetrain::arcadeDrive(double throttle, double turn) {

@@ -15,11 +15,16 @@
  */
 
 namespace drivetrain {
-    const int kLeftDriveTalonPort = 1;
-    const int kLeftDriveVenomPort = 2;
+    const int kLeftDriveTalonPort = 3;
+    const int kLeftDriveVenomPort = 0;
 
-    const int kRightDriveTalonPort = 3;
-    const int kRightDriveVenomPort = 4;
+    const int kRightDriveTalonPort = 1;
+    const int kRightDriveVenomPort = 2; 
+}
+
+namespace intake {
+    const int kActuateTalonPort = 5;
+    const int kIntakeVictorPort = 6;
 }
 
 namespace oi {

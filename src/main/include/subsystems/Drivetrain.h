@@ -12,6 +12,9 @@
 
 #include <frc/drive/DifferentialDrive.h>
 
+#include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/shuffleboard/ShuffleboardTab.h>
+
 #include "Constants.h"
 
 class Drivetrain : public frc2::SubsystemBase {
@@ -43,7 +46,9 @@ class Drivetrain : public frc2::SubsystemBase {
 
   frc::DifferentialDrive drive{leftMotors, rightMotors};
 
-  bool flipped;
+  bool flipped = false;
+
+  frc::ShuffleboardTab& tab = frc::Shuffleboard::GetTab("Test");
 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
