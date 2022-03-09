@@ -32,6 +32,11 @@ namespace uptake {
     const int kFeederVictorPort = 8;
 }
 
+namespace shooter {
+    const int kBottomSparkPort = 9;
+    const int kTopSparkPort = 10;
+}
+
 namespace oi {
     const int kDriveJoystickPort = 0; // drive joystick
     const int kDriveControllerPort = 1; // operator ps5 controller
