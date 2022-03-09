@@ -16,11 +16,13 @@ void Intake::setIntakeMotor(double intakeSpeed){
   IntakeVictor.Set(intakeSpeed);
 }
 
-void Intake::stop(){
+
+void Intake::stopActuate(){
   ActuateTalon.Set(0);
+}
+
+void Intake::stopIntake(){
   IntakeVictor.Set(0);
 }
 
 void Intake::Periodic() { }
-
-void Intake::SimulationPeriodic() { }

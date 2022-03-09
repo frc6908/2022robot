@@ -7,7 +7,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 
-#include "subsystems/Intake.h"
+#include "subsystems/Uptake.h"
 
 /**
  * An example command that uses an example subsystem.
@@ -16,9 +16,9 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class IntakeBall : public frc2::CommandHelper<frc2::CommandBase, IntakeBall> {
+class UptakeBall : public frc2::CommandHelper<frc2::CommandBase, UptakeBall> {
  public:
-  IntakeBall(Intake*);
+  UptakeBall(Uptake*);
 
   void Initialize() override;
 
@@ -29,5 +29,5 @@ class IntakeBall : public frc2::CommandHelper<frc2::CommandBase, IntakeBall> {
   bool IsFinished() override;
 
   private:
-    Intake* m_intake;
+    Uptake* m_uptake;
 };

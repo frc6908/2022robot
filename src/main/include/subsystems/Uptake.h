@@ -6,7 +6,6 @@
 
 #include <frc2/command/SubsystemBase.h>
 
-#include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
 
 #include <frc/shuffleboard/Shuffleboard.h>
@@ -15,17 +14,17 @@
 #include "Constants.h"
 
 
-class Intake: public frc2::SubsystemBase {
+class Uptake: public frc2::SubsystemBase {
  public:
-  Intake();
+  Uptake();
 
-  void setActuateMotor(double);
+  void setUptakeMotor(double);
 
-  void setIntakeMotor(double);
+  void setFeederMotor(double);
 
-  void stopActuate();
+  void stopUptake();
 
-  void stopIntake();
+  void stopFeeder();
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -35,8 +34,8 @@ class Intake: public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX ActuateTalon{intake::kActuateTalonPort};
-  ctre::phoenix::motorcontrol::can::WPI_VictorSPX IntakeVictor{intake::kIntakeVictorPort};
+  ctre::phoenix::motorcontrol::can::WPI_VictorSPX FeederVictor{uptake::kFeederVictorPort};
+  ctre::phoenix::motorcontrol::can::WPI_VictorSPX UptakeVictor{uptake::kUptakeVictorPort};
 
 
   frc::ShuffleboardTab& tab = frc::Shuffleboard::GetTab("Test");

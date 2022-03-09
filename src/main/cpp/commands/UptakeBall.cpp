@@ -2,31 +2,31 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/IntakeBall.h"
+#include "commands/UptakeBall.h"
 
-IntakeBall::IntakeBall(Intake* intake) : 
-  m_intake{intake} {
+UptakeBall::UptakeBall(Uptake* Uptake) : 
+  m_uptake{Uptake} {
   // Use addRequirements() here to declare subsystem dependencies.
 
-  AddRequirements(intake);
+  AddRequirements(Uptake);
 }
 
 // Called when the command is initially scheduled.
-void IntakeBall::Initialize() {
-  this->m_intake->stopIntake();
+void UptakeBall::Initialize() {
+  this->m_uptake->stopUptake();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void IntakeBall::Execute() {
-  this->m_intake->setIntakeMotor(0.5);
+void UptakeBall::Execute() {
+  this->m_uptake->setUptakeMotor(0.25);
 }
 
 // Called once the command ends or is interrupted.
-void IntakeBall::End(bool interrupted) {
-  this->m_intake->stopIntake();
+void UptakeBall::End(bool interrupted) {
+  this->m_uptake->stopUptake();
 }
 
 // Returns true when the command should end.
-bool IntakeBall::IsFinished() {
+bool UptakeBall::IsFinished() {
   return false;
 }

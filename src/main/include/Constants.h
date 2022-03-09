@@ -27,6 +27,11 @@ namespace intake {
     const int kIntakeVictorPort = 6;
 }
 
+namespace uptake {
+    const int kUptakeVictorPort = 7;
+    const int kFeederVictorPort = 8;
+}
+
 namespace oi {
     const int kDriveJoystickPort = 0; // drive joystick
     const int kDriveControllerPort = 1; // operator ps5 controller
