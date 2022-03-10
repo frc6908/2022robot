@@ -15,7 +15,7 @@
 
 #include "Constants.h"
 
-#include <frc2/controller/PIDController.h>
+#include <frc/controller/PIDController.h>
 #include <frc/controller/SimpleMotorFeedforward.h>
 
 class Shooter: public frc2::SubsystemBase {
@@ -30,9 +30,17 @@ class Shooter: public frc2::SubsystemBase {
 
   double getBottomVelocity(void);
 
+  frc::PIDController* getTPID(void);
+
+  frc::PIDController* getBPID(void);
+
+  frc::SimpleMotorFeedforward<units::meters>* getTFF(void);
+
+  frc::SimpleMotorFeedforward<units::meters>* getBFF(void);
+
   void stopShooter(void);
 
-  static bool withinTolerance(double, double, double);
+  bool withinTolerance(double, double, double);
 
 
   /**
@@ -54,21 +62,21 @@ class Shooter: public frc2::SubsystemBase {
   double tkI = 0;
   double tkD = 0;
 
-  double tkS = 0.0643;
-  double tkV = 0.128;
-  double tkA = 0.0205;
+  units::volt_t tkS{0.0643};
+  units::unit_t< units::compound_unit<units::volts, units::seconds, units::inverse<units::meters>> > tkV{0.128};
+  units::unit_t< units::compound_unit<units::volts, units::seconds, units::seconds, units::inverse<units::meters>> > tkA{0.0205};
 
   double bkP = 0;
   double bkI = 0;
   double bkD = 0;
 
-  double bkS = 0.0496;
-  double bkV = 0.129;
-  double bkA = 0.0208;
+  units::volt_t bkS{0.0496};
+  units::unit_t< units::compound_unit<units::volts, units::seconds, units::inverse<units::meters>> > bkV{0.129};
+  units::unit_t< units::compound_unit<units::volts, units::seconds, units::seconds, units::inverse<units::meters>> > bkA{0.0208};
 
-  frc2::PIDContrller tpid{tkP, tkI, tkD};
-  frc2::PIDController bpid{bkP, bkI, bkD};
+  frc::PIDController tpid{tkP, tkI, tkD};
+  frc::PIDController bpid{bkP, bkI, bkD};
 
-  frc2::SimpleMotorFeedforward tff{tkS, tkV, tkA};
-  frc2::SimpleMotorFeedforward bff{bkS, bkV, bkA};
+  frc::SimpleMotorFeedforward<units::meters> tff{tkS, tkV, tkA};
+  frc::SimpleMotorFeedforward<units::meters> bff{bkS, bkV, bkA};
 };

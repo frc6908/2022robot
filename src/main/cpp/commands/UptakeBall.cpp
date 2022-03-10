@@ -4,11 +4,11 @@
 
 #include "commands/UptakeBall.h"
 
-UptakeBall::UptakeBall(Uptake* Uptake) : 
-  m_uptake{Uptake} {
+UptakeBall::UptakeBall(Uptake* uptake) : 
+  m_uptake{uptake} {
   // Use addRequirements() here to declare subsystem dependencies.
 
-  AddRequirements(Uptake);
+  AddRequirements(uptake);
 }
 
 // Called when the command is initially scheduled.

@@ -26,6 +26,22 @@ double Shooter::getBottomVelocity() {
   return bottomSpark.GetEncoder().GetVelocity() / 60; // check these definitions for syntax i don't have the autocomplete rn
 }
 
+frc::PIDController* Shooter::getTPID() {
+  return &tpid;
+}
+
+frc::PIDController* Shooter::getBPID() {
+  return &bpid;
+}
+
+frc::SimpleMotorFeedforward<units::meters>* Shooter::getTFF() {
+  return &tff;
+}
+
+frc::SimpleMotorFeedforward<units::meters>* Shooter::getBFF() {
+  return &bff;
+}
+
 void Shooter::stopShooter(){
   bottomSpark.StopMotor();
   topSpark.StopMotor();
@@ -33,6 +49,6 @@ void Shooter::stopShooter(){
 
 void Shooter::Periodic() { }
 
-static bool Shooter::withinTolerance(double a, double b, double t) {
+bool Shooter::withinTolerance(double a, double b, double t) {
   return std::abs(a - b) <= t;
 }

@@ -4,42 +4,44 @@
 
 #include "commands/Shoot.h"
 
-Shoot::Shoot(Shooter* shooter, double topVelocity, double bottomVelocity) : 
-  m_shooter{Shooter}, topVelocity{topVelocity}, bottomVelocity{bottomVelocity} {
+Shoot::Shoot(Shooter* shooter, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > topV, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > bottomV) : 
+  m_shooter{shooter}, topVelocity{topV}, bottomVelocity{bottomV} {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(Shooter);
+
+  AddRequirements(shooter);
 }
 
 // Called when the command is initially scheduled.
-void Shooter::Initialize() {
+void Shoot::Initialize() {
 }
 
 // Called repeatedly when this Command is scheduled to run
-void Shooter::Execute() {
-  double tv = this->m_shooter.getTopVelocity();
-  double bv = this->m_shooter.getBottomVelocity();
+void Shoot::Execute() {
+  double tv = this->m_shooter->getTopVelocity();
+  double bv = this->m_shooter->getBottomVelocity();
 
-  if (Shooter.withinTolerance(tv, topVelocity)) {
+  if (this->m_shooter->withinTolerance(tv, topVelocity.value(), 3)) {
       // DO SOMETHING 
   }
 
-  this->m_shooter->tpid.SetSetpoint(this->topVelocity);
-  this->m_shooter->bpid.SetSetpoint(this->bottomVelocity);
+  this->m_shooter->getTPID()->SetSetpoint(this->topVelocity.value());
+  this->m_shooter->getBPID()->SetSetpoint(this->bottomVelocity.value());
 
-  double ctop = this->tpid->Calculate(tv);
-  double cbot = this->tpid->Calculate(bv);
+  units::voltage::volt_t ctop{this->m_shooter->getTPID()->Calculate(tv)};
+  units::voltage::volt_t cbot{this->m_shooter->getBPID()->Calculate(bv)};
 
-  this->m_shooter->setTopMotorVoltage(ctop + this->m_shooter->tff->Calculate(topVelocity));
-  this->m_shooter->setBottomMotorVoltage(cbot + this->m_shooter->bff->Calculate(bottomVelocity));
+  this->m_shooter->setTopMotorVoltage(ctop + this->m_shooter->getTFF()->Calculate(topVelocity));
+  this->m_shooter->setBottomMotorVoltage(cbot + this->m_shooter->getBFF()->Calculate(bottomVelocity));
 }
 
 // Called once the command ends or is interrupted.
-void Shooter::End(bool interrupted) {
-  this->m_shooter->setTopMotorVoltage(0);
-  this->m_shooter->setBottomMotorVoltage(0);
+void Shoot::End(bool interrupted) {
+  units::voltage::volt_t stopVoltage{0.0};
+  this->m_shooter->setTopMotorVoltage(stopVoltage);
+  this->m_shooter->setBottomMotorVoltage(stopVoltage);
 }
 
 // Returns true when the command should end.
-bool Shooter::IsFinished() {
+bool Shoot::IsFinished() {
   return false;
 }

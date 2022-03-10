@@ -18,7 +18,7 @@
  */
 class Shoot : public frc2::CommandHelper<frc2::CommandBase, Shoot> {
  public:
-  Shoot(Shooter*);
+  Shoot(Shooter*, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> >, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> >);
 
   void Initialize() override;
 
@@ -30,5 +30,7 @@ class Shoot : public frc2::CommandHelper<frc2::CommandBase, Shoot> {
 
   private:
     Shooter* m_shooter;
-    double topVelocity, bottomVelocity;
+    //units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds> >
+    units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > topVelocity;
+    units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > bottomVelocity;
 };
