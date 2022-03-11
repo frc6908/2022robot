@@ -20,6 +20,8 @@ namespace drivetrain {
 
     const int kRightDriveTalonPort = 1;
     const int kRightDriveVenomPort = 2; 
+
+    const int kWheelDiameter = 6;
 }
 
 namespace intake {

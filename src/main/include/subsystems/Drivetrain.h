@@ -4,11 +4,18 @@
 
 #pragma once
 
+#include <cmath>
+
 #include <frc2/command/SubsystemBase.h>
 
 #include <CANVenom.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
+
+#include <frc/SPI.h>
+#include <AHRS.h>
+
+#include <frc/geometry/Rotation2d.h>
 
 #include <frc/drive/DifferentialDrive.h>
 
@@ -29,6 +36,20 @@ class Drivetrain : public frc2::SubsystemBase {
   
   void flipDT();
 
+  frc::Rotation2d getHeading();
+
+  double getHeadingAsAngle();
+
+  void resetEncoders();
+
+  double getLeftEncoderDistance();
+
+  double getRightEncoderDistance();
+
+  double venomTicksToInches(double);
+
+  void resetGyro();
+
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -45,6 +66,8 @@ class Drivetrain : public frc2::SubsystemBase {
   frc::MotorControllerGroup rightMotors{rightDriveTalon, rightDriveVenom};
 
   frc::DifferentialDrive drive{leftMotors, rightMotors};
+
+  AHRS gyro{frc::SPI::Port::kMXP};
 
   bool flipped = false;
 

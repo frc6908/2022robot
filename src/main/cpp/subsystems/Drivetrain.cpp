@@ -10,7 +10,7 @@
 
 Drivetrain::Drivetrain() {
     rightMotors.SetInverted(1); // inverts the right drive motors
-
+    resetGyro();
 }
 
 void Drivetrain::setDriveMotors(double left, double right) {
@@ -37,6 +37,36 @@ void Drivetrain::stop() {
 
 void Drivetrain::flipDT() {
     flipped = !flipped;
+}
+
+frc::Rotation2d Drivetrain::getHeading() {
+    units::degree_t deg{-gyro.GetAngle()};
+    return frc::Rotation2d(deg);
+}
+
+double Drivetrain::getHeadingAsAngle() {
+    return getHeading().Degrees().value();
+}
+
+void Drivetrain::resetEncoders() {
+    leftDriveVenom.ResetPosition();
+    rightDriveVenom.ResetPosition();
+}
+
+double Drivetrain::getLeftEncoderDistance() {
+    return leftDriveVenom.GetPosition();
+}
+
+double Drivetrain::getRightEncoderDistance() {
+    return rightDriveVenom.GetPosition();
+}
+
+double Drivetrain::venomTicksToInches(double revolutions) {
+    return M_PI * drivetrain::kWheelDiameter * revolutions / 10.71;
+}
+
+void Drivetrain::resetGyro() {
+    gyro.Reset();
 }
 // This method will be called once per scheduler run
 void Drivetrain::Periodic() {}
