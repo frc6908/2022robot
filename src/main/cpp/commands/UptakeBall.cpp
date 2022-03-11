@@ -14,16 +14,20 @@ UptakeBall::UptakeBall(Uptake* uptake) :
 // Called when the command is initially scheduled.
 void UptakeBall::Initialize() {
   this->m_uptake->stopUptake();
+  this->m_uptake->stopUptake();
+  this->m_uptake->stopBottomFeeder();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void UptakeBall::Execute() {
   this->m_uptake->setUptakeMotor(0.25);
+  this->m_uptake->setBottomFeederMotor(0.25);
 }
 
 // Called once the command ends or is interrupted.
 void UptakeBall::End(bool interrupted) {
   this->m_uptake->stopUptake();
+  this->m_uptake->stopBottomFeeder();
 }
 
 // Returns true when the command should end.

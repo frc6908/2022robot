@@ -14,10 +14,12 @@
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Uptake.h"
+#include "subsystems/Shooter.h"
 
 #include "commands/ArcadeDrive.h"
 #include "commands/IntakeBall.h"
 #include "commands/UptakeBall.h"
+#include "commands/Shoot.h"
 
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
@@ -43,11 +45,13 @@ class RobotContainer {
   Drivetrain m_drivetrain;
 
   Intake m_intake;
-  
   Uptake m_uptake;
+  Shooter m_shooter;
 
   frc::Joystick m_joystick{oi::kDriveJoystickPort};
   frc::PS4Controller m_controller{oi::kDriveControllerPort};
+
+  
 
   void ConfigureButtonBindings();
 };

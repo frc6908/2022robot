@@ -8,6 +8,7 @@
 #include <frc2/command/CommandHelper.h>
 
 #include "subsystems/Shooter.h"
+#include "subsystems/Uptake.h"
 
 /**
  * An example command that uses an example subsystem.
@@ -18,7 +19,7 @@
  */
 class Shoot : public frc2::CommandHelper<frc2::CommandBase, Shoot> {
  public:
-  Shoot(Shooter*, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> >, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> >);
+  Shoot(Shooter*, Uptake*, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> >, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> >);
 
   void Initialize() override;
 
@@ -30,6 +31,7 @@ class Shoot : public frc2::CommandHelper<frc2::CommandBase, Shoot> {
 
   private:
     Shooter* m_shooter;
+    Uptake* m_uptake;
     //units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds> >
     units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > topVelocity;
     units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > bottomVelocity;

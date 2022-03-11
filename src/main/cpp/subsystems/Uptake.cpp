@@ -12,16 +12,24 @@ void Uptake::setUptakeMotor(double UptakeSpeed){
   UptakeVictor.Set(UptakeSpeed);
 }
 
-void Uptake::setFeederMotor(double FeederSpeed){
-  FeederVictor.Set(FeederSpeed);
+void Uptake::setBottomFeederMotor(double FeederSpeed){
+  BottomFeederVictor.Set(FeederSpeed);
+}
+
+void Uptake::setTopFeederMotor(double FeederSpeed){
+  TopFeederVictor.Set(FeederSpeed);
 }
 
 void Uptake::stopUptake(){
   UptakeVictor.Set(0);
 }
 
-void Uptake::stopFeeder(){
-  FeederVictor.Set(0);
+void Uptake::stopBottomFeeder(){
+  BottomFeederVictor.Set(0);
+}
+
+void Uptake::stopTopFeeder(){
+  TopFeederVictor.Set(0);
 }
 
 void Uptake::Periodic() { }

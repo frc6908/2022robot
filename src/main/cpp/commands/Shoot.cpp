@@ -4,11 +4,12 @@
 
 #include "commands/Shoot.h"
 
-Shoot::Shoot(Shooter* shooter, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > topV, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > bottomV) : 
-  m_shooter{shooter}, topVelocity{topV}, bottomVelocity{bottomV} {
+Shoot::Shoot(Shooter* shooter, Uptake* uptake, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > topV, units::unit_t< units::compound_unit<units::meters, units::inverse<units::seconds>> > bottomV) : 
+  m_shooter{shooter}, m_uptake{uptake}, topVelocity{topV}, bottomVelocity{bottomV} {
   // Use addRequirements() here to declare subsystem dependencies.
 
   AddRequirements(shooter);
+  AddRequirements(uptake);
 }
 
 // Called when the command is initially scheduled.
@@ -22,6 +23,7 @@ void Shoot::Execute() {
 
   if (this->m_shooter->withinTolerance(tv, topVelocity.value(), 3)) {
       // DO SOMETHING 
+      this->m_uptake->setTopFeederMotor(0.25);
   }
 
   this->m_shooter->getTPID()->SetSetpoint(this->topVelocity.value());

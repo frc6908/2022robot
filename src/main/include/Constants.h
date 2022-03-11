@@ -31,12 +31,13 @@ namespace intake {
 
 namespace uptake {
     const int kUptakeVictorPort = 7;
-    const int kFeederVictorPort = 8;
+    const int kBottomFeederVictorPort = 8;
+    const int kTopFeederVictorPort = 9;
 }
 
 namespace shooter {
-    const int kBottomSparkPort = 9;
-    const int kTopSparkPort = 10;
+    const int kBottomSparkPort = 10;
+    const int kTopSparkPort = 11;
 }
 
 namespace oi {

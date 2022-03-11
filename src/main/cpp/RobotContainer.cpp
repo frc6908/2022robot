@@ -18,11 +18,15 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-  frc2::JoystickButton intakeBall(&m_joystick, 2);
+  
+  frc2::JoystickButton intakeBall(&m_joystick, 2); //Side Button
   frc2::JoystickButton uptakeBall(&m_joystick, 5);
+  frc2::JoystickButton shoot(&m_joystick, 1);
+  
 
   intakeBall.WhileHeld(IntakeBall(&m_intake));
   uptakeBall.WhileHeld(UptakeBall(&m_uptake));
+  shoot.WhileHeld(Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{50.0}, units::velocity::meters_per_second_t{50.0}));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

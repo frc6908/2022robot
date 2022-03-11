@@ -20,11 +20,15 @@ class Uptake: public frc2::SubsystemBase {
 
   void setUptakeMotor(double);
 
-  void setFeederMotor(double);
+  void setBottomFeederMotor(double);
+
+  void setTopFeederMotor(double);
 
   void stopUptake();
 
-  void stopFeeder();
+  void stopBottomFeeder();
+
+  void stopTopFeeder();
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -34,7 +38,8 @@ class Uptake: public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 
-  ctre::phoenix::motorcontrol::can::WPI_VictorSPX FeederVictor{uptake::kFeederVictorPort};
+  ctre::phoenix::motorcontrol::can::WPI_VictorSPX BottomFeederVictor{uptake::kBottomFeederVictorPort};
+  ctre::phoenix::motorcontrol::can::WPI_VictorSPX TopFeederVictor{uptake::kTopFeederVictorPort};
   ctre::phoenix::motorcontrol::can::WPI_VictorSPX UptakeVictor{uptake::kUptakeVictorPort};
 
 
