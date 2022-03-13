@@ -15,7 +15,7 @@ void DriveAuton::Initialize() {
 }
 
 void DriveAuton::Execute() {
-    this->m_drivetrain->setDriveMotors(-0.4, 0.4);
+    this->m_drivetrain->setDriveMotors(-0.4, -0.4);
 }
 
 void DriveAuton::End(bool interrupted) {

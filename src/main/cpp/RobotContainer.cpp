@@ -19,16 +19,22 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
   
-  frc2::JoystickButton intakeBall(&m_joystick, 2); //Side Button
-  frc2::JoystickButton uptakeBall(&m_joystick, 5);
+  frc2::JoystickButton uptakeBall(&m_joystick, 2); //Side Button
+  frc2::JoystickButton intakeBall(&m_joystick, 5);
+  frc2::JoystickButton outtakeBall(&m_joystick, 6);
   //frc2::JoystickButton flipDriveTrain(&m_joystick, 7);
   frc2::JoystickButton shoot(&m_joystick, 1);
+  //frc2::JoystickButton flipDrivetrain(&m_joystick, 8);
   
 
   intakeBall.WhileHeld(IntakeBall(&m_intake));
   uptakeBall.WhileHeld(UptakeBall(&m_uptake));
+  outtakeBall.WhileHeld(OuttakeBall(&m_intake));
   //flipDriveTrain.WhenPressed(m_drivetrain.flipDT());
-  shoot.WhileHeld(Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{50.0}, units::velocity::meters_per_second_t{50.0}));
+  shoot.WhileHeld(SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-6.0}, units::voltage::volt_t{6.0}));
+  //shoot.WhileHeld(Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{30.0}, units::velocity::meters_per_second_t{30.0}));
+  //flipDrivetrain.WhenPressed(FlipDrivetrain(&m_drivetrain));
+
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() { 

@@ -18,9 +18,12 @@
 
 #include "commands/ArcadeDrive.h"
 #include "commands/IntakeBall.h"
+#include "commands/OuttakeBall.h"
 #include "commands/UptakeBall.h"
 #include "commands/Shoot.h"
+#include "commands/SetShoot.h"
 #include "commands/DriveAuton.h"
+#include "commands/FlipDrivetrain.h"
 
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>

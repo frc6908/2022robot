@@ -14,8 +14,8 @@ Drivetrain::Drivetrain() {
 }
 
 void Drivetrain::setDriveMotors(double left, double right) {
-    tab.Add("Left Motor", left);
-    tab.Add("Right Motor", right);
+    //tab.Add("Left Motor", left);
+    //tab.Add("Right Motor", right);
     if (flipped) {
         leftMotors.Set(-right);
         rightMotors.Set(-left);
