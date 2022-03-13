@@ -20,6 +20,7 @@
 #include "commands/IntakeBall.h"
 #include "commands/UptakeBall.h"
 #include "commands/Shoot.h"
+#include "commands/DriveAuton.h"
 
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
@@ -43,6 +44,7 @@ class RobotContainer {
   ExampleCommand m_autonomousCommand;
 
   Drivetrain m_drivetrain;
+  DriveAuton m_driveAutoCommand{&m_drivetrain};
 
   Intake m_intake;
   Uptake m_uptake;

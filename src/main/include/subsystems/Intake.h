@@ -35,8 +35,8 @@ class Intake: public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX ActuateTalon{intake::kActuateTalonPort};
-  ctre::phoenix::motorcontrol::can::WPI_VictorSPX IntakeVictor{intake::kIntakeVictorPort};
+  ctre::phoenix::motorcontrol::can::WPI_VictorSPX ActuateTalon{intake::kActuateVictorPort};
+  ctre::phoenix::motorcontrol::can::WPI_TalonSRX IntakeVictor{intake::kIntakeTalonPort};
 
 
   frc::ShuffleboardTab& tab = frc::Shuffleboard::GetTab("Test");

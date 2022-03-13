@@ -15,29 +15,29 @@
  */
 
 namespace drivetrain {
-    const int kLeftDriveTalonPort = 3;
-    const int kLeftDriveVenomPort = 0;
+    const int kLeftDriveTalonPort = 14;
+    const int kLeftDriveVenomPort = 15;
 
-    const int kRightDriveTalonPort = 1;
-    const int kRightDriveVenomPort = 2; 
+    const int kRightDriveTalonPort = 12;
+    const int kRightDriveVenomPort = 0; 
 
     const int kWheelDiameter = 6;
 }
 
 namespace intake {
-    const int kActuateTalonPort = 5;
-    const int kIntakeVictorPort = 6;
+    const int kActuateVictorPort = 5;
+    const int kIntakeTalonPort = 4;
 }
 
 namespace uptake {
-    const int kUptakeVictorPort = 7;
-    const int kBottomFeederVictorPort = 8;
-    const int kTopFeederVictorPort = 9;
+    const int kUptakeVictorPort = 8;
+    const int kBottomFeederVictorPort = 9;
+    const int kTopFeederVictorPort = 11;
 }
 
 namespace shooter {
-    const int kBottomSparkPort = 10;
-    const int kTopSparkPort = 11;
+    const int kBottomSparkPort = 2;
+    const int kTopSparkPort = 13;
 }
 
 namespace oi {

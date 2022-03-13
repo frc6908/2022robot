@@ -31,7 +31,9 @@ void ArcadeDrive::Execute() {
   double throttle = std::abs(m_throttle()) < 0.1 ? 0 : m_throttle();
 
   double speedMultiplier = normalize(1, -1, 0.2, 1, m_acceleration());
-
+  
+  //tab.Add("LeftM", ( (throttle + turn) * speedMultiplier) );
+  //tab.Add("RightM",  ( (throttle - turn) * speedMultiplier) );
   this->m_drivetrain->setDriveMotors(((throttle + turn) * speedMultiplier), ((throttle - turn) * speedMultiplier));  
 } 
 

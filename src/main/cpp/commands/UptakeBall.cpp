@@ -20,8 +20,8 @@ void UptakeBall::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void UptakeBall::Execute() {
-  this->m_uptake->setUptakeMotor(0.25);
-  this->m_uptake->setBottomFeederMotor(0.25);
+  this->m_uptake->setUptakeMotor(1);
+  this->m_uptake->setBottomFeederMotor(1);
 }
 
 // Called once the command ends or is interrupted.

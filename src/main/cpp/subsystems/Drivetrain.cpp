@@ -14,14 +14,14 @@ Drivetrain::Drivetrain() {
 }
 
 void Drivetrain::setDriveMotors(double left, double right) {
-    tab.Add("LeftMotor", left);
-    tab.Add("RightMotor", right);
+    tab.Add("Left Motor", left);
+    tab.Add("Right Motor", right);
     if (flipped) {
         leftMotors.Set(-right);
         rightMotors.Set(-left);
     } else {
         leftMotors.Set(left);
-        rightMotors.Set(right - 0.015);
+        rightMotors.Set(right);
     }
     //NetworkTableEntry testTab = Shuffleboard.getTab("Test").add("Pi", 3.14);
 }
