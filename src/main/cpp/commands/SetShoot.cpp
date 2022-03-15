@@ -14,6 +14,7 @@ SetShoot::SetShoot(Shooter* shooter, Uptake* uptake, units::voltage::volt_t topV
 
 // Called when the command is initially scheduled.
 void SetShoot::Initialize() {
+  
   units::voltage::volt_t stopVoltage{0.0};
   this->m_shooter->setTopMotorVoltage(stopVoltage);
   this->m_shooter->setBottomMotorVoltage(stopVoltage);
@@ -23,6 +24,7 @@ void SetShoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SetShoot::Execute() {
+  frc::SmartDashboard::PutNumber("bottomVelocity", m_shooter->getBottomVelocity());
   this->m_shooter->setTopMotorVoltage(topVoltage);
   this->m_shooter->setBottomMotorVoltage(bottomVoltage);
   this->m_uptake->setTopFeederMotor(0.5);

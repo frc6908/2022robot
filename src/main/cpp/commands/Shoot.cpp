@@ -18,11 +18,13 @@ void Shoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
+  frc::SmartDashboard::PutNumber("bottomVelocity", this->m_shooter->getBottomVelocity());
   double tv = this->m_shooter->getTopVelocity();
   double bv = this->m_shooter->getBottomVelocity();
 
   if (this->m_shooter->withinTolerance(tv, topVelocity.value(), 3)) {
       // DO SOMETHING 
+      this->m_uptake->setUptakeMotor(0.6);
       this->m_uptake->setTopFeederMotor(0.25);
   }
 

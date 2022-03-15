@@ -8,7 +8,7 @@
 
 #include <rev/CANSparkMax.h>
 #include <rev/CANSparkMaxLowLevel.h>
-
+#include <rev/SparkMaxRelativeEncoder.h>
 
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/shuffleboard/ShuffleboardTab.h>
@@ -18,8 +18,13 @@
 #include <frc/controller/PIDController.h>
 #include <frc/controller/SimpleMotorFeedforward.h>
 
+#include <networktables/NetworkTable.h>
+#include <networktables/NetworkTableInstance.h>
+#include <networktables/NetworkTableEntry.h>
+
 class Shooter: public frc2::SubsystemBase {
  public:
+
   Shooter();
 
   void setBottomMotorVoltage(units::voltage::volt_t);
@@ -56,18 +61,23 @@ class Shooter: public frc2::SubsystemBase {
   rev::CANSparkMax bottomSpark{shooter::kBottomSparkPort, rev::CANSparkMaxLowLevel::MotorType::kBrushless};
   rev::CANSparkMax topSpark{shooter::kTopSparkPort, rev::CANSparkMaxLowLevel::MotorType::kBrushless};
 
-  frc::ShuffleboardTab& tab = frc::Shuffleboard::GetTab("Test");
+  rev::SparkMaxRelativeEncoder bottomEncoder = bottomSpark.GetEncoder();
+  rev::SparkMaxRelativeEncoder topEncoder = topSpark.GetEncoder();
+
+  //frc::ShuffleboardTab tab = frc::Shuffleboard::GetTab("Shuffleboard");
+
+  //nt::NetworkTableEntry tp = tab.Add("TopP").GetEntry();
 
   double tkP = 0.0075;
-  double tkI = 0;
-  double tkD = 0;
+  double tkI = 0.01;
+  double tkD = 0.005;
 
   units::volt_t tkS{0.0643};
   units::unit_t< units::compound_unit<units::volts, units::seconds, units::inverse<units::meters>> > tkV{0.128};
   units::unit_t< units::compound_unit<units::volts, units::seconds, units::seconds, units::inverse<units::meters>> > tkA{0.0205};
 
-  double bkP = 0;
-  double bkI = 0;
+  double bkP = 0.01;
+  double bkI = 0.005;
   double bkD = 0;
 
   units::volt_t bkS{0.0496};

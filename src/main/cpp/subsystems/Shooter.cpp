@@ -19,11 +19,11 @@ void Shooter::setTopMotorVoltage(units::voltage::volt_t topVoltage){
 }
 
 double Shooter::getTopVelocity() {
-  return topSpark.GetEncoder().GetVelocity() / 60;
+  return topEncoder.GetVelocity() / 60;
 }
 
 double Shooter::getBottomVelocity() {
-  return bottomSpark.GetEncoder().GetVelocity() / 60; // check these definitions for syntax i don't have the autocomplete rn
+  return bottomEncoder.GetVelocity() / 60; // check these definitions for syntax i don't have the autocomplete rn
 }
 
 frc::PIDController* Shooter::getTPID() {

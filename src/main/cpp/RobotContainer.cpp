@@ -23,7 +23,9 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton intakeBall(&m_joystick, 5);
   frc2::JoystickButton outtakeBall(&m_joystick, 6);
   //frc2::JoystickButton flipDriveTrain(&m_joystick, 7);
-  frc2::JoystickButton shoot(&m_joystick, 1);
+  frc2::JoystickButton setShoot6(&m_joystick, 1);
+  frc2::JoystickButton setShoot12(&m_joystick, 12);
+  frc2::JoystickButton shoot(&m_joystick, 11);
   //frc2::JoystickButton flipDrivetrain(&m_joystick, 8);
   
 
@@ -31,8 +33,9 @@ void RobotContainer::ConfigureButtonBindings() {
   uptakeBall.WhileHeld(UptakeBall(&m_uptake));
   outtakeBall.WhileHeld(OuttakeBall(&m_intake));
   //flipDriveTrain.WhenPressed(m_drivetrain.flipDT());
-  shoot.WhileHeld(SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-6.0}, units::voltage::volt_t{6.0}));
-  //shoot.WhileHeld(Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{30.0}, units::velocity::meters_per_second_t{30.0}));
+  setShoot6.WhileHeld(SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-6.0}, units::voltage::volt_t{6.0}));
+  setShoot12.WhileHeld(SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-14.0}, units::voltage::volt_t{8.0}));
+  shoot.WhileHeld(Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{60.0}, units::velocity::meters_per_second_t{60.0}));
   //flipDrivetrain.WhenPressed(FlipDrivetrain(&m_drivetrain));
 
 }
@@ -42,4 +45,5 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   //return &m_autonomousCommand;
   return &m_driveAutoCommand;
 }
+
 

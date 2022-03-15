@@ -10,6 +10,8 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/Uptake.h"
 
+#include "frc/smartdashboard/SmartDashboard.h"
+
 /**
  * An example command that uses an example subsystem.
  *
