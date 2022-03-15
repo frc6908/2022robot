@@ -12,6 +12,7 @@
 
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/shuffleboard/ShuffleboardTab.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include "Constants.h"
 
@@ -64,21 +65,32 @@ class Shooter: public frc2::SubsystemBase {
   rev::SparkMaxRelativeEncoder bottomEncoder = bottomSpark.GetEncoder();
   rev::SparkMaxRelativeEncoder topEncoder = topSpark.GetEncoder();
 
-  //frc::ShuffleboardTab tab = frc::Shuffleboard::GetTab("Shuffleboard");
+  frc::ShuffleboardTab& tab = frc::Shuffleboard::GetTab("SmartDashboard");
+  //frc::SmartDashboard::PutNumber("bottomVelocity", this->m_shooter->getBottomVelocity());
 
-  //nt::NetworkTableEntry tp = tab.Add("TopP").GetEntry();
-
+  nt::NetworkTableEntry tp = tab.Add("TopP", 0.0).GetEntry();
+  nt::NetworkTableEntry ti = tab.Add("TopI", 0.0).GetEntry();
+  nt::NetworkTableEntry td = tab.Add("TopD", 0.0).GetEntry();
+  /*
   double tkP = 0.0075;
   double tkI = 0.01;
   double tkD = 0.005;
+  */
+  double tkP = tp.GetDouble(0.0);
+  double tkI = ti.GetDouble(0.0);
+  double tkD = td.GetDouble(0.0);
 
   units::volt_t tkS{0.0643};
   units::unit_t< units::compound_unit<units::volts, units::seconds, units::inverse<units::meters>> > tkV{0.128};
   units::unit_t< units::compound_unit<units::volts, units::seconds, units::seconds, units::inverse<units::meters>> > tkA{0.0205};
 
-  double bkP = 0.01;
-  double bkI = 0.005;
-  double bkD = 0;
+  nt::NetworkTableEntry bp = tab.Add("BottomP", 0.0).GetEntry();
+  nt::NetworkTableEntry bi = tab.Add("BottomI", 0.0).GetEntry();
+  nt::NetworkTableEntry bd = tab.Add("BottomD", 0.0).GetEntry();
+  
+  double bkP = bp.GetDouble(0.0);
+  double bkI = bi.GetDouble(0.0);
+  double bkD = bd.GetDouble(0.0);
 
   units::volt_t bkS{0.0496};
   units::unit_t< units::compound_unit<units::volts, units::seconds, units::inverse<units::meters>> > bkV{0.129};
