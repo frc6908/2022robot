@@ -19,5 +19,5 @@ void FlipDrivetrain::Execute() { }
 void FlipDrivetrain::End(bool interrupted) { }
 
 bool FlipDrivetrain::IsFinished() {
-    return false;
+    return true;
 }
