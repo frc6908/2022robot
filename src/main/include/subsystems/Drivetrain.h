@@ -21,6 +21,8 @@
 
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/shuffleboard/ShuffleboardTab.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <iostream>
 
 #include "Constants.h"
 

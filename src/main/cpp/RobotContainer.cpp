@@ -26,17 +26,17 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton setShoot6(&m_joystick, 1);
   frc2::JoystickButton setShoot12(&m_joystick, 12);
   frc2::JoystickButton shoot(&m_joystick, 11);
-  //frc2::JoystickButton flipDrivetrain(&m_joystick, 8);
+  frc2::JoystickButton flipDrivetrain(&m_joystick, 8);
   
 
-  intakeBall.WhileHeld(IntakeBall(&m_intake));
-  uptakeBall.WhileHeld(UptakeBall(&m_uptake));
-  outtakeBall.WhileHeld(OuttakeBall(&m_intake));
-  //flipDriveTrain.WhenPressed(m_drivetrain.flipDT());
-  setShoot6.WhileHeld(SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-6.0}, units::voltage::volt_t{6.0}));
-  setShoot12.WhileHeld(SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-14.0}, units::voltage::volt_t{8.0}));
-  shoot.WhileHeld(Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{60.0}, units::velocity::meters_per_second_t{60.0}));
-  //flipDrivetrain.WhenPressed(FlipDrivetrain(&m_drivetrain));
+  intakeBall.WhileHeld(new IntakeBall(&m_intake));
+  uptakeBall.WhileHeld(new UptakeBall(&m_uptake));
+  outtakeBall.WhileHeld(new OuttakeBall(&m_intake));
+  //flipDrivetrain.WhenPressed(m_drivetrain.flipDT(), &m_drivetrain);
+  setShoot6.WhileHeld(new SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-6.0}, units::voltage::volt_t{6.0}));
+  setShoot12.WhileHeld(new SetShoot(&m_shooter, &m_uptake, units::voltage::volt_t{-14.0}, units::voltage::volt_t{8.0}));
+  shoot.WhileHeld(new Shoot(&m_shooter, &m_uptake, units::velocity::meters_per_second_t{60.0}, units::velocity::meters_per_second_t{60.0}));
+  flipDrivetrain.WhileHeld(new FlipDrivetrain(&m_drivetrain));
 
 }
 
