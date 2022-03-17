@@ -18,6 +18,7 @@ void Shoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
+  frc::SmartDashboard::PutNumber("topVelocity", this->m_shooter->getTopVelocity());
   frc::SmartDashboard::PutNumber("bottomVelocity", this->m_shooter->getBottomVelocity());
   double tv = this->m_shooter->getTopVelocity();
   double bv = this->m_shooter->getBottomVelocity();

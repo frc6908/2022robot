@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <cmath>
+
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -22,6 +24,8 @@ namespace drivetrain {
     const int kRightDriveVenomPort = 0; 
 
     const int kWheelDiameter = 6;
+    
+    const double kDT = 0.02;
 }
 
 namespace intake {
@@ -38,6 +42,12 @@ namespace uptake {
 namespace shooter {
     const int kBottomSparkPort = 2;
     const int kTopSparkPort = 13;
+}
+
+namespace limelight {
+    const double kTargetHeight = 104;
+    const double kCameraHeight = 26;
+    const double kCameraAngle = 45;
 }
 
 namespace oi {
