@@ -26,7 +26,7 @@ void Shoot::Execute() {
   if (this->m_shooter->withinTolerance(tv, topVelocity.value(), 3)) {
       // DO SOMETHING 
       this->m_uptake->setUptakeMotor(0.6);
-      this->m_uptake->setTopFeederMotor(0.25);
+      this->m_uptake->setTopFeederMotor(0.5);
   }
 
   this->m_shooter->getTPID()->SetSetpoint(this->topVelocity.value());
@@ -44,6 +44,7 @@ void Shoot::End(bool interrupted) {
   units::voltage::volt_t stopVoltage{0.0};
   this->m_shooter->setTopMotorVoltage(stopVoltage);
   this->m_shooter->setBottomMotorVoltage(stopVoltage);
+  this->m_uptake->setTopFeederMotor(0);
 }
 
 // Returns true when the command should end.

@@ -36,8 +36,8 @@ class PIDRotateAngle : public frc2::CommandHelper<frc2::CommandBase, PIDRotateAn
     Limelight* m_limelight;
 
     double setpoint;
-    double kP = 0.13; // 0.15;// 0.03;// 0.025; // 0.06//0.0825;//0.075;// 0.0875; // 0.09; //0.1; // 0.1125;//0.125; //0.15;
-    double kD = 0.013; // 0.01;//0.002; //0.011;// 0.009875;// 0.00975;
+    double kP = 0.08; // 0.15; // 0.03;// 0.025; // 0.06//0.0825;//0.075;// 0.0875; // 0.09; //0.1; // 0.1125;//0.125; //0.15;
+    double kD = 0.00975; // 0.01;//0.002; //0.011;// 0.009875;// 0.00975;
     double kI = 0; //0.005;
     // Use 0.0825 & 0.00975 for drivetrain rotation
     double previousError;

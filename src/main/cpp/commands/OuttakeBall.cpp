@@ -18,7 +18,7 @@ void OuttakeBall::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void OuttakeBall::Execute() {
-  this->m_intake->setIntakeMotor(-0.5);
+  this->m_intake->setIntakeMotor(-1);
 }
 
 // Called once the command ends or is interrupted.
