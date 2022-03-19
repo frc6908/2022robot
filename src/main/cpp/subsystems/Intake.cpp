@@ -8,21 +8,21 @@ Intake::Intake() {
   // Implementation of subsystem constructor goes here.
 }
 
-void Intake::setActuateMotor(double actuateSpeed){
-  ActuateTalon.Set(actuateSpeed);
-}
 
-void Intake::setIntakeMotor(double intakeSpeed){
+void Intake::setIntakeMotor(double intakeSpeed) {
   IntakeVictor.Set(intakeSpeed);
 }
 
-
-void Intake::stopActuate(){
-  ActuateTalon.Set(0);
+void Intake::setBottomFeederMotor(double bottomFeederSpeed) {
+  BottomFeederVictor.Set(bottomFeederSpeed);
 }
 
-void Intake::stopIntake(){
+void Intake::stopIntake() {
   IntakeVictor.Set(0);
+}
+
+void Intake::stopBottomFeeder() {
+  BottomFeederVictor.Set(0);
 }
 
 void Intake::Periodic() { }

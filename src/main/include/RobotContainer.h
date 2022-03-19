@@ -49,12 +49,13 @@ class RobotContainer {
   ExampleCommand m_autonomousCommand;
 
   Drivetrain m_drivetrain;
-  DriveAuton m_driveAutoCommand{&m_drivetrain};
+ 
 
   Intake m_intake;
   Uptake m_uptake;
   Shooter m_shooter;
   Limelight m_limelight;
+  DriveAuton m_driveAutoCommand{&m_drivetrain};
 
   frc::Joystick m_joystick{oi::kDriveJoystickPort};
   frc::PS4Controller m_controller{oi::kDriveControllerPort};

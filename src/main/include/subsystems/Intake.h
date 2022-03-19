@@ -19,13 +19,14 @@ class Intake: public frc2::SubsystemBase {
  public:
   Intake();
 
-  void setActuateMotor(double);
-
   void setIntakeMotor(double);
 
-  void stopActuate();
+  void setBottomFeederMotor(double);
 
   void stopIntake();
+
+  void stopBottomFeeder();
+
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -35,9 +36,7 @@ class Intake: public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 
-  ctre::phoenix::motorcontrol::can::WPI_VictorSPX ActuateTalon{intake::kActuateVictorPort};
   ctre::phoenix::motorcontrol::can::WPI_TalonSRX IntakeVictor{intake::kIntakeTalonPort};
+  ctre::phoenix::motorcontrol::can::WPI_VictorSPX BottomFeederVictor{intake::kBottomFeederVictorPort};
 
-
-  frc::ShuffleboardTab& tab = frc::Shuffleboard::GetTab("Test");
 };

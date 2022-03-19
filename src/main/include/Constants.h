@@ -29,13 +29,12 @@ namespace drivetrain {
 }
 
 namespace intake {
-    const int kActuateVictorPort = 5;
     const int kIntakeTalonPort = 4;
+    const int kBottomFeederVictorPort = 5;
 }
 
 namespace uptake {
     const int kUptakeVictorPort = 8;
-    const int kBottomFeederVictorPort = 9;
     const int kTopFeederVictorPort = 11;
 }
 

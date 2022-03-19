@@ -67,7 +67,7 @@ class Drivetrain : public frc2::SubsystemBase {
   frc::MotorControllerGroup leftMotors{leftDriveTalon, leftDriveVenom};
   frc::MotorControllerGroup rightMotors{rightDriveTalon, rightDriveVenom};
 
-  frc::DifferentialDrive drive{leftMotors, rightMotors};
+  //frc::DifferentialDrive drive{leftMotors, rightMotors};
 
   AHRS gyro{frc::SPI::Port::kMXP};
 

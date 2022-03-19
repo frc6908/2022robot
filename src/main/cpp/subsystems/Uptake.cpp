@@ -12,20 +12,12 @@ void Uptake::setUptakeMotor(double UptakeSpeed){
   UptakeVictor.Set(UptakeSpeed);
 }
 
-void Uptake::setBottomFeederMotor(double FeederSpeed){
-  BottomFeederVictor.Set(FeederSpeed);
-}
-
 void Uptake::setTopFeederMotor(double FeederSpeed){
   TopFeederVictor.Set(FeederSpeed);
 }
 
 void Uptake::stopUptake(){
   UptakeVictor.Set(0);
-}
-
-void Uptake::stopBottomFeeder(){
-  BottomFeederVictor.Set(0);
 }
 
 void Uptake::stopTopFeeder(){

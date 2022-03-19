@@ -14,16 +14,19 @@ OuttakeBall::OuttakeBall(Intake* intake) :
 // Called when the command is initially scheduled.
 void OuttakeBall::Initialize() {
   this->m_intake->stopIntake();
+  this->m_intake->stopBottomFeeder();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void OuttakeBall::Execute() {
   this->m_intake->setIntakeMotor(-1);
+  this->m_intake->setBottomFeederMotor(0.6);
 }
 
 // Called once the command ends or is interrupted.
 void OuttakeBall::End(bool interrupted) {
   this->m_intake->stopIntake();
+  this->m_intake->stopBottomFeeder();
 }
 
 // Returns true when the command should end.
