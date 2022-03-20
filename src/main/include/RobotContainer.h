@@ -55,7 +55,7 @@ class RobotContainer {
   Uptake m_uptake;
   Shooter m_shooter;
   Limelight m_limelight;
-  DriveAuton m_driveAutoCommand{&m_drivetrain};
+  DriveAuton m_driveAutoCommand{&m_drivetrain, &m_shooter, &m_uptake};
 
   frc::Joystick m_joystick{oi::kDriveJoystickPort};
   frc::PS4Controller m_controller{oi::kDriveControllerPort};
